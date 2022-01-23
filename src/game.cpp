@@ -3,9 +3,9 @@
 
 int main() {
   InitWindow(WIDTH, HEIGHT, TITLE);
-  SetTargetFPS(60);
+  SetTargetFPS(FPS);
 
-  World world(20);
+  World world(CELL_SIZE);
 
   while (!WindowShouldClose()) {
     BeginDrawing();
