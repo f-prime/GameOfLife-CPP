@@ -51,7 +51,7 @@ void World::process_input() {
     bool cell_exists = this->cells.contains(position);
 
     if (cell_exists) {
-      auto* cell = this->cells[position];
+      auto cell = this->cells[position];
       cell->is_alive = !cell->is_alive;
     }
   }
@@ -71,7 +71,7 @@ void World::process_input() {
 void World::draw_cells() {
   auto cell_size = this->cell_size;
   for (auto kv: this->cells) {
-    auto* cell = kv.second;
+    auto cell = kv.second;
     auto location = kv.first;
     auto x = cell->x;
     auto y = cell->y;
@@ -87,7 +87,7 @@ void World::draw_cells() {
   }  
 }
 
-NeighborStates World::get_neighbor_states(Cell* cell) {
+NeighborStates World::get_neighbor_states(std::shared_ptr<Cell> cell) {
   NeighborStates ns;
 
   ns.top_left = false;
@@ -134,9 +134,9 @@ NeighborStates World::get_neighbor_states(Cell* cell) {
 }
 
 void World::create_cell(int x, int y) {
-  Cell* cell = new Cell(x, y);
+  auto cell = std::make_shared<Cell>(x, y);
   std::array<int, 2> location = { x, y };
-  auto pair = std::pair<std::array<int, 2>, Cell*>(location, cell);
+  auto pair = std::pair<std::array<int, 2>, std::shared_ptr<Cell>>(location, cell);
   this->cells.insert(pair);
 }
 

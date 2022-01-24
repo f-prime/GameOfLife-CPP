@@ -1,6 +1,8 @@
 #include "world.hpp"
 #include "utils.hpp"
 
+const char* TITLE = "Game of Life";
+
 int main() {
   InitWindow(WIDTH, HEIGHT, TITLE);
   SetTargetFPS(FPS);

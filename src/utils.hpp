@@ -6,13 +6,13 @@
 #include <map>
 #include <tuple>
 #include <string>
+#include <memory>
 #include "../include/raylib.h"
 
-#define WIDTH 800
-#define HEIGHT 600
-#define CELL_SIZE 20
-#define FPS 60
-#define TITLE "Game of Life"
+const int WIDTH = 800;
+const int HEIGHT = 600;
+const int CELL_SIZE = 20;
+const int FPS = 60;
 
 int round_to_nearest_cell(int x, int cell_size);
 
